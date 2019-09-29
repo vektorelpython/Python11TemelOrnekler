@@ -9,4 +9,4 @@ metin = "yaşamak bir ağaç gibi tek ve hür ve bir orman gibi kardeşçesine"
 # print(metin)
 metin =  "Teşekkürler Süpermen"
 metin = metin.replace("e","ı").replace("ü","ı")
-print(metin)
+print(metin) 
