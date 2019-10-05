@@ -30,8 +30,10 @@ print(liste[0][1])
 #     print(a/b)
 #     a,b = b,c
 
-
+liste =  (1,2,3,[1,"2"])
+liste[1] = 3  #++++++++++++++++++++
 demet = (1,2,3,[1,"2"])
+demet[1] = 3  #----------------
 
 
 sozluk = {"book":"kitap","pencil":"kalem"}

@@ -17,8 +17,17 @@ metin = "yaşamak bir ağaç gibi tek ve hür ve bir orman gibi kardeşçesine"
 
 metin = " vektorel bilisim "
 
-metin = metin.replace (" ","-")
-metin = metin.strip("-")
-metin = metin.split("-")
+
+metin = metin.replace(" ","-")
+metin = metin.strip()
+metin = metin.split(".")
 print(metin) 
+
+
+
+
+# metin = "Neler Neler Yapıyorsun Bensizken Ankara'da"
+# metin = 'Uyhular "Haram" oldu '
+# metin = """ Ba""h gençliğim ' 'talan da oldu """
+
 

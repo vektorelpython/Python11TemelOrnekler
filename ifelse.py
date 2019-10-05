@@ -13,27 +13,28 @@ IS
 IN
 
 """
-# a = int(input("1. Sayıyı Giriniz"))
-# b = int(input("2. Sayıyı Giriniz"))
-# if a==b:
-#     print("a ve b eşit")
-# else:
-#     print("a b ye eşit değil")
-# print("İyi Günler")
+a = int(input("1. Sayıyı Giriniz"))
+b = int(input("2. Sayıyı Giriniz"))
+if a==b:
+    print("a ve b eşit")
+    print("olabilir yani")
+else:
+    print("a b ye eşit değil")
+print("İyi Günler")
 
-# Not = int(input("Notu Giriniz"))
-# if Not >80:
-#     print("AA")
-# elif Not > 65:
-#     print("BB")
-# elif Not > 55:
-#     print("CC")
-# elif Not>45:
-#     print("DD")
-# elif Not>0:
-#     print("EE")
-# else:
-#     print("Yanlış Not")
+Not = int(input("Notu Giriniz"))
+if Not >80:
+    print("AA")
+elif Not > 65:
+    print("BB")
+elif Not > 55:
+    print("CC")
+elif Not>45:
+    print("DD")
+elif Not>0:
+    print("EE")
+else:
+    print("Yanlış Not")
 
 # x = 1
 # y = -1
@@ -63,7 +64,7 @@ liste = [1,2,3,4,5]
 liste2 = liste
 if 2 in liste:
     print("liste içinde")
-if liste == liste2:
+if liste is liste2:
     print("eşitler")
 
 metin = "Hava Kapalı Ama Akalım Arabaya Bindim Yürü Bakalım"
