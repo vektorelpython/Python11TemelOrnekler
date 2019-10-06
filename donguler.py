@@ -45,8 +45,8 @@
 #     else:
 #         print("Sayı Asal",j)
 a = 1
-while a>0:
-    a = int(input("Sayıyı Giriniz :"))
+# while a>0:
+#     a = int(input("Sayıyı Giriniz :"))
 
     # for i in range(2,a):
     #     if a % i == 0:
@@ -55,13 +55,25 @@ while a>0:
     #     print("Sayı Asal",a)
         
 
-    for j in range(2,a):
-        for i in range(2,j):
-            if j % i == 0:
-                break
-        else:
-            print("Sayı Asal",j)
+#     for j in range(2,a):
+#         for i in range(2,j):
+#             if j % i == 0:
+#                 break
+#         else:
+#             print("Sayı Asal",j)
+# else:
+#     print("iyi günler dileriz") 
+
+
+ad = input("Adınızı giriniz")
+if ad == "Soner":
+    pass
 else:
-    print("iyi günler dileriz") 
+    print("merhaba",ad)
 
 
+liste = ["Ahmet","Hakkı","Soner","Hülagü"]
+for item in liste:
+    if item == "Soner":
+        continue
+    print("Merhaba",item)
