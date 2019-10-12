@@ -2,7 +2,7 @@
 
 # a = 1
 # b = 1
-# for i in range(0,11):
+# for i in range(0,11):   
 #     c = a+b
 #     print("fibannocci {}. sıradaki terim : {}".format(i+2,c))
 #     a,b = b,c
