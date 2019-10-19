@@ -60,13 +60,13 @@
 # else:
 #     print("Üzgünüm")
 
-import time
+# import time
 
 
 
 # def ArmstrongCheck(number):
 #     temp = int(number)
-#     basamak = len(number)
+#     basamak = len(str(number))
 #     sonuc = 0
 #     while temp > 0:
 #         sonuc += (temp%10)**basamak
@@ -75,7 +75,7 @@ import time
 
 # zaman = time.time()
 # for i in range(10000000,1,-1):
-#     if ArmstrongCheck(str(i)):
+#     if ArmstrongCheck(i):
 #         print(i)
 # print(time.time()-zaman)
 
