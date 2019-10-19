@@ -2,9 +2,7 @@
 
 
 def dosyaAc(adres): 
-    import os 
-    import sys
-    sys.path.append(os.getcwd())
+    import os
     if not os.path.exists(adres) :
         dosya = open(adres,"w+",encoding="UTF-8")
     else:
@@ -13,12 +11,15 @@ def dosyaAc(adres):
 
 def dosyaOku(dosya,param=1):
     dosya.seek(0)
+    result = ""
     if param == 1:
-        return dosya.read()
+        result = dosya.read()
     elif param == 2:
-        return dosya.readline()
+        result = dosya.readline()
     else:
-        return dosya.readlines()
+        result = dosya.readlines()
+    dosya.close()
+    return result
 
 
 def dosyaYaz(*args,dosya):
@@ -26,17 +27,35 @@ def dosyaYaz(*args,dosya):
     for item in args:
         metin += item+";"
     metin = metin.rstrip(";")+"\n"
-    liste = dosyaOku(dosya,param=3)
+    liste = dosya.readlines()
     dosya.seek(0)
     dosya.truncate()
     liste.append(metin)
     dosya.writelines(liste)
     dosya.close()
 
-dosya = dosyaAc("defter.csv")
-dosyaYaz("Ali","Veli","123456",dosya=dosya)
+def AnaMenu():
+    menu = """
+    1-Yazma
+    2-Listeleme
+    5-Çıkış
+    """
+    while True:
+        print(menu)
+        islem = input("İşlem Numarası Giriniz")
+        dosya = dosyaAc("defter.csv")
+        if islem == "1":
+            adi = input("Adını Giriniz")
+            soyadi = input("soyadi Giriniz")
+            telefon = input("telefon Giriniz")
+            dosyaYaz(adi,soyadi,telefon,dosya=dosya)
+        elif islem == "2":
+            print(*dosyaOku(dosya,param=3))
+        elif islem == "5":
+            break
 
-dosya = dosyaAc("defter.csv")
-print(dosyaOku(dosya,param=3))
+AnaMenu()
+    
+
 
 
