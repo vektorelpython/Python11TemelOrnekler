@@ -11,12 +11,32 @@ def dosyaAc(adres):
         dosya = open(adres,"r+",encoding="UTF-8")
     return dosya
 
+def dosyaOku(dosya,param=1):
+    dosya.seek(0)
+    if param == 1:
+        return dosya.read()
+    elif param == 2:
+        return dosya.readline()
+    else:
+        return dosya.readlines()
 
+
+def dosyaYaz(*args,dosya):
+    metin = ""
+    for item in args:
+        metin += item+";"
+    metin = metin.rstrip(";")+"\n"
+    liste = dosyaOku(dosya,param=3)
+    dosya.seek(0)
+    dosya.truncate()
+    liste.append(metin)
+    dosya.writelines(liste)
+    dosya.close()
 
 dosya = dosyaAc("defter.csv")
-metin = dosya.read()
-print(metin)
-dosya.seek(0)
-metin = dosya.readlines()
-print(dosya.tell())
-print(metin)
+dosyaYaz("Ali","Veli","123456",dosya=dosya)
+
+dosya = dosyaAc("defter.csv")
+print(dosyaOku(dosya,param=3))
+
+
