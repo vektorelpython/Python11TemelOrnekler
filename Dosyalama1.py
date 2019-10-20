@@ -1,5 +1,6 @@
 
-
+from Log import Logtut
+import datetime as dt
 
 def dosyaAc(adres): 
     import os
@@ -10,22 +11,30 @@ def dosyaAc(adres):
     return dosya
 
 def dosyaOku(dosya,param=1,cursor=0):
-    dosya.seek(0)
-    result = ""
-    if param == 1:
-        if cursor:
-            result = dosya.read(cursor)
-        else:
-            result = dosya.read()
-    elif param == 2:
-        if cursor:
+    try:
+        dosya.seek(0)
+        result = ""
+        if param == 1:
+            if cursor:
+                result = dosya.read(cursor)
+            else:
+                result = dosya.read()
+        elif param == 2:
+            if cursor:
                 result = dosya.readline(cursor)
+            else:
+                result = dosya.readline()
         else:
-            result = dosya.readline()
-    else:
-        result = dosya.readlines()
-    dosya.close()
+            result = dosya.readlines()
+    except Exception as hata:
+        Logtut("1",hata,tarih())
+    finally:
+        dosya.close()
     return result
+
+def tarih(tarih=dt.date.today()):
+    return str(tarih.year)+"_"+str(tarih.month)+"_"+str(tarih.day)
+
 
 
 
@@ -42,31 +51,40 @@ def dosyaKayitListele(dosya):
     print("-"*55)
 
 def kayitDuzenle(dosya):
-    dosyaKayitListele(dosya)
-    ID = int(input("Kayıt Numarası Giriniz"))
-    dosya.seek(0)
-    liste = dosya.readlines()
-    adi = input("Adını Giriniz")
-    soyadi = input("Soyadini Giriniz")
-    telefon = input("Telefon Giriniz")
-    kayit = adi + ";" + soyadi + ";" + telefon + "\n"
-    liste[ID-1] = kayit
-    dosya.seek(0)
-    dosya.truncate()
-    dosya.writelines(liste)
-    dosya.close()
+    try:
+        dosyaKayitListele(dosya)
+        ID = int(input("Kayıt Numarası Giriniz"))
+        dosya.seek(0)
+        liste = dosya.readlines()
+        adi = input("Adını Giriniz")
+        soyadi = input("Soyadini Giriniz")
+        telefon = input("Telefon Giriniz")
+        kayit = adi + ";" + soyadi + ";" + telefon + "\n"
+        liste[ID-1] = kayit
+        dosya.seek(0)
+        dosya.truncate()
+        dosya.writelines(liste)
+    except Exception as hata:
+        Logtut("1",str(hata),str(dt.date.today))
+    finally:
+        dosya.close()
 
 
 def kayitSil(dosya):
-    dosyaKayitListele(dosya)
-    ID = int(input("Kayıt Numarası Giriniz"))
-    dosya.seek(0)
-    liste = dosya.readlines()
-    liste.pop(ID-1)
-    dosya.seek(0)
-    dosya.truncate()
-    dosya.writelines(liste)
-    dosya.close()
+    try:
+        fisim = "KayitSil"
+        dosyaKayitListele(dosya)
+        ID = int(input("Kayıt Numarası Giriniz"))
+        dosya.seek(0)
+        liste = dosya.readlines()
+        liste.pop(ID-1)
+        dosya.seek(0)
+        dosya.truncate()
+        dosya.writelines(liste)
+    except Exception as hata:
+        Logtut("1",str(hata)+-+fisim,tarih())
+    finally:
+        dosya.close()
 
 def dosyaYaz(*args,dosya):
     metin = ""
@@ -82,7 +100,8 @@ def dosyaYaz(*args,dosya):
     dosya.writelines(liste)
     dosya.close()
 
-def AnaMenu():
+def AnaMenu(adres = ""):
+    print(__name__)
     menu = """
     1-Yazma
     2-Listeleme
@@ -93,7 +112,7 @@ def AnaMenu():
     while True:
         print(menu)
         islem = input("İşlem Numarası Giriniz")
-        dosya = dosyaAc("defter.csv")
+        dosya = dosyaAc(adres)
         if islem == "1":
             adi = input("Adını Giriniz")
             soyadi = input("soyadi Giriniz")
@@ -108,8 +127,8 @@ def AnaMenu():
         elif islem == "5":
             break
 
-AnaMenu()
-    
+if __name__ == '__main__':
+    AnaMenu("deneme.csv")
 
 
 
