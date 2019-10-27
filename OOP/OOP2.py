@@ -57,6 +57,9 @@ class Robot:
         print("Toplam {} robot var".format(cls.population))
 
 
+
+Robot.population
+
 droid = Robot("Soner")
 droid.say_hi()
 Robot.kac_tane()
