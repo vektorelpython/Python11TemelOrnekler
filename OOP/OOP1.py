@@ -123,7 +123,7 @@ class HarfSayaci:
         mesaj = "{} kelimesinde {} sesli harf var."
         sesli_harf_sayisi = self.arttir()
         print(mesaj.format(self.kelime,sesli_harf_sayisi))
-        
+
     def calistir(self):
         self.kelime = self.kelimesor()
         self.ekrana_bas()
