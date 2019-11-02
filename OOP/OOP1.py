@@ -103,29 +103,32 @@ Inheritance
 # 6. Aşama
 
 class HarfSayaci:
+    kelime = ""
     def __init__(self):
         self.sesli_harfler = "aeıioöuü"
         self.sayac=  0
-
-    def kelimesor(self):
-        return input("Bir Kelime Girin")
+        self.mesaj = ""
+    
+    @classmethod
+    def kelimesor(cls):
+        cls.kelime =  input("Bir Kelime Girin")
 
     def seslidir(self,harf):
         return harf.lower() in self.sesli_harfler
 
     def arttir(self):
-        for harf in self.kelime:
+        for harf in HarfSayaci.kelime:
             if self.seslidir(harf):
                 self.sayac += 1
         return self.sayac
 
     def ekrana_bas(self):
-        mesaj = "{} kelimesinde {} sesli harf var."
+        mesaj = "{} kelimesinde {} {} harf var."
         sesli_harf_sayisi = self.arttir()
-        print(mesaj.format(self.kelime,sesli_harf_sayisi))
+        print(mesaj.format(HarfSayaci.kelime,sesli_harf_sayisi,self.mesaj))
 
     def calistir(self):
-        self.kelime = self.kelimesor()
+        # HarfSayaci.kelimesor()
         self.ekrana_bas()
 
 if __name__ == "__main__":
