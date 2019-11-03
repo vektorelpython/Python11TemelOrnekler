@@ -1,26 +1,64 @@
 from OOP4 import *
 import random
 import time
-menu = """
-1-İnsan - İnsan
-2-Bilgisayar - İnsan
-3-Bilgisayar - Bilgisayar
-"""
-print(menu)
-tercih = input("Oyun tipini seçiniz")
-karakterlistesi = [deadPool,IronMan,Hulk,AgentRomanoff]
-if tercih == "1":
-    for item in karakterlistesi:
-        print(karakterlistesi.index(item)+1)
-    oyuncu1 = input("Oyuncu 1 için seçim")
-    oyuncu2 = input("Oyuncu 2 için seçim")
-    oyuncu1 = karakterlistesi[int(oyuncu1)-1]()
-    oyuncu2 = karakterlistesi[int(oyuncu2)-1]()
-    while oyuncu1.saglik >= 0 or oyuncu2.saglik >= 0:
-        liste = [oyuncu1,oyuncu2]
-        liste[random.randint(0,1)].vurus(liste[random.randint(0,1)])
-        time.sleep(2)
-# elif tercih == "2":
-#     pass
-#     #karakter seçimi ve bilgisayar rastgele
-# if tercih == "3":
+
+class Gamer():
+    def __init__(self,tip):
+        self.tip = tip
+        self.karakter = None
+        self.karakterBelirle()
+
+    
+    def karakterSec(self):
+        karakterListesi = """
+        1-DeadPool
+        2-Hulk
+        3-IronMan
+        4-Agent Romanoff
+        """
+        print(karakterListesi)
+        return int(input("karakter seçimi yapınız"))
+
+    def hareketSec(self,hero):
+        hareketListesi = """
+        1-Vurus
+        2-Savunma
+        3-SuperVurus
+        """
+        if self.tip == 1 :
+            print(hareketListesi)
+            secim =  int(input("hareket seçimi yapınız"))
+        else:
+            secim = random.randint(1,4)
+        if secim == 1:
+            self.karakter.vurus(hero)
+        elif secim == 2:
+            self.karakter.savunma()
+        elif secim == 3:
+            self.karakter.supervurus(hero)
+
+    
+
+    def karakterBelirle(self):
+        karakterlistesi = [deadPool,Hulk,IronMan,AgentRomanoff]
+        if self.tip == 1:
+            secim = self.karakterSec() - 1
+            self.karakter = karakterlistesi[secim]()
+        else:
+            secim = random.randint(0,3)
+            self.karakter = karakterlistesi[secim]()
+        
+Oyuncu1 = Gamer(0)
+Oyuncu2 = Gamer(0)
+while Oyuncu1.karakter.saglik>0 and Oyuncu2.karakter.saglik >0:
+    time.sleep(1)
+    Oyuncu1.hareketSec(Oyuncu2.karakter)
+    time.sleep(1)
+    Oyuncu2.hareketSec(Oyuncu1.karakter)
+
+
+
+
+
+
+

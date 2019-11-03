@@ -6,6 +6,7 @@ class Kedi():
         self.adi = adi
         self.tuy = "Kısa"
         Kedi.liste.append(adi)
+        self.beslenme()
     
     def beslenme(self):
         print(self.adi," beslendi")

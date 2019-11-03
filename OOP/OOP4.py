@@ -3,6 +3,8 @@ class MarvelHero():
         self.adi = adi
         self.saglik = saglik
         self.guc = guc
+        self.comboLimit = 10
+        self.combo = self.comboLimit
 
     def durum(self):
         durum = "Adı :{} Saglık :{}"
@@ -10,27 +12,44 @@ class MarvelHero():
 
     def vurus(self,hero):
         hero.darbeal(self.guc)
-        print(self.adi," vurdu ")
+        print(self.adi," vurdu ",hero.adi,"darbe aldı")
+        self.combo +=1
+        if self.combo == self.comboLimit:
+            self.supervurus(hero)
+            self.combo = 0
+        hero.durum()
+    
+    def savunma(self):
+        self.saglik += 5
+        self.combo += 1
+        print(self.adi,"savunma ")
+        self.durum()
+
+    def supervurus(self,hero):
+        if self.combo == self.comboLimit:
+            hero.darbeal(self.guc*5)
+            print(self.adi,"süper vuruş ",hero.adi,"darbe aldı")
+            hero.durum()
+            self.combo = 0
+        else:
+            print(self.adi,"yeterli gücü yok")
     
     def darbeal(self,guc):
         self.saglik -=guc
-        print(self.adi," darbe aldı")
-        self.durum()
+
+       
 
 
 
 class deadPool(MarvelHero):
     def __init__(self):
         super().__init__("DeadPool", 1000, 100)
+        self.comboLimit = 3
 
 class Hulk(MarvelHero):
     def __init__(self):
         super().__init__("Hulk",1500,150)
-
-    def vurus(self,hero):
-        hero.darbeal(self.guc*2)
-        print(self.adi," vurdu ")
-        self.durum()
+        self.comboLimit = 5
 
 class IronMan(MarvelHero):
     def __init__(self):
@@ -40,7 +59,3 @@ class AgentRomanoff(MarvelHero):
     def __init__(self):
         super().__init__("Agent Romanoff",1750,175)
     
-    def darbeal(self,guc):
-        self.saglik -=guc/2
-        print(self.adi," darbe aldı")
-        self.durum()
