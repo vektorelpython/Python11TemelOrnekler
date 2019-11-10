@@ -31,3 +31,7 @@ print(metin)
 # metin = """ Ba""h gençliğim ' 'talan da oldu """
 
 
+
+
+
+

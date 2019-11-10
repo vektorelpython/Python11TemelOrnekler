@@ -23,3 +23,6 @@ print(liste)
 print(liste.index("Ali"))
 
 
+
+import os
+os.walk

@@ -1,3 +1,11 @@
 {
-    "python.pythonPath": "C:\\Python37\\python.exe"
+    "python.pythonPath": "C:\\Python37\\python.exe",
+    "sqltools.connections": [
+        {
+            "database": "C:\\Users\\vektorel\\Documents\\GitHub\\Python11TemelOrnekler\\SQL\\chinook\\chinook.db",
+            "dialect": "SQLite",
+            "name": "bizim"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
 }
